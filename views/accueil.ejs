@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/back-office.ejs %>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title">
+                    Connexion au back-office<br>Orientation 3ème</p>
+                <form class="login" action="/" method="post">
+                    <input type="text" id="identifiant" name="identifiant" value="" placeholder="votre identifiant" required />
+                    <input type="password" id="motdepasse" name="motdepasse" type="password" placeholder="votre mot de passe" value="" />
+                    <input  type="submit" value="Se connecter" class="btn btn-success btn-sm" />
+                    <div class="remember-forgot">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" />
+                                        Se souvenir de moi
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 forgot-pass-content">
+                                <a href="javascription:void(0)" class="forgot-pass">Mot de passe oublié</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/public/js/script.js"></script>
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="col-lg-12 col-md-12 accueil">Back-office Orientation 3ème</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 vide"></div>
+    </div>
+    <form action="/" method="post">
+        <div class="row">
+            <label class="col-lg-offset-4 col-lg-6 col-md-offset-4 col-md-6" for="identifiant">Votre identifiant: </label>
+            <div class=" col-lg-offset-4 col-lg-6 col-md-offset-4 col-md-6">
+                <input type="text" id="identifiant" name="identifiant" value="" placeholder="votre identifiant" required>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-4 col-lg-6 col-md-offset-4 col-md-6" for="motdepasse">Votre mot de passe: </label>
+            <div class="col-lg-offset-4 col-lg-6 col-md-offset-4 col-md-6">
+                <input type="password" id="motdepasse" name="motdepasse" type="password" placeholder="votre mot de passe" value="" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 vide"></div>
+        </div>
+        <div class="row">
+            <label class="col-md-4" for=""></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+-->

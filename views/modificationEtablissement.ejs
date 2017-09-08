@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container-fluid">
+
+    <a href="/deconnexion">Déconnexion</a>
+
+    <% etablissements.forEach(function (etablissement)  { %>
+
+    <form class="col-lg-12 col-md-12" method="POST" action="/etablissements/modifier/<%= etablissement.id %>">
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="nom">Nom de l'établissement: </label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 nom" id="nom" name="nom" value="<%= etablissement.nom %>" required>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="adresse">Adresse:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="adresse" name="adresse" value="<%= etablissement.adresse %>" required>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="departement">Département:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="departement" name="departement" value="<%= etablissement.departement %>" required>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="telephone">Contact (téléphone):</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="telephone" name="telephone" value="<%= etablissement.telephone %>" required>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="email">Contact (e-mail):</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 email" id="email" name="email" value="<%= etablissement.email %>" required>
+        </div>
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="formations">Formations</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 " id="formations" name="formations" value="<%= etablissement.formations %>" required>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 vide"></div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+    </form>
+    <% }) %>
+</div>
+</body>
+</html>

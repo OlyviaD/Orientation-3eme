@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container">
+
+    <a href="/deconnexion">Déconnexion</a>
+
+
+    <form class="col-lg-12 col-md-12" method="POST" action="/metier/modifier/<%=metier.id%>">
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="nom">Intitulé du poste:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 nom" id="nom" name="nom" type="text" value="<%=metier.nom%>">
+        </div>
+
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="acces_metier">Accès au métier:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 acces_metier" id="acces_metier" name="acces_au_metier" type="text" value="<%=metier.acces_au_metier%>" >
+        </div>
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="exemple_de_parcours">Exemple de parcours:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 exemple_de_parcours" id="exemple_de_parcours" name="exemple_de_parcours" type="text" value="<%=metier.exemple_de_parcours%>" >
+        </div>
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="secteurs_activite">Secteur d'activité:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 secteurs_activite" id="secteurs_activite" name="secteurs_activite" type="text" value="<%=metier.secteurs_activite%>">
+        </div> <!-- voir problème modifications -->
+
+        <div class="row">
+            <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="centres_interet">Centres d'intérêt:</label>
+        </div>
+        <div class="row">
+            <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 centres_interet" id="centres_interet" name="centres_interet" type="text" value="<%=metier.centres_interet%>">
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 vide"></div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </div>
+    </form>
+
+
+    <a href="/metier">Annuler la modification</a>
+</div>
+</body>
+</html>

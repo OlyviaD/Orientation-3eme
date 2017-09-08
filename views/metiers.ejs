@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+    <div class="container">
+
+        <a href="/deconnexion" class="btn btn-warning">Déconnexion</a>
+        <a href="/categories" class="btn btn-warning">Retour au menu</a>
+
+        <h2>Liste des métiers</h2>
+
+        <a href="/metier/ajouter/" class="btn btn-info">Ajouter un métier</a>
+
+        <!--<p> ... </p>-->
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Accès au métier</th>
+                <th>Exemple de parcours</th>
+                <th>Secteur d'activité</th>
+                <th>Centres d'intérêt</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if (typeof metiers == 'object' && metiers.length >0 )  { %>
+            <% metiers.forEach(function (metier)  { %>
+            <tr>
+                <td><%= metier.id %></td>
+                <td><%= metier.nom %></td>
+                <td><%= metier.acces_au_metier %></td>
+                <td><%= metier.exemple_de_parcours %></td>
+                <td><%= metier.secteurs_activite %></td>
+                <td><%= metier.centres_interet  %></td>
+                <td><a href="/metier/modifier/<%= metier.id %>" class="btn btn-primary">Modifier</a></td>
+                <td>
+                    <form method="POST" action="/metier/<%= metier.id %>" id="suppressionMetier<%= metier.id %>">
+                        <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" onclick="confirmationSuppression(<%= metier.id %>)" class="btn btn-warning">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+            <% }else { %>
+            <td class="text-center">Aucun métier</td>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        function confirmationSuppression(monForm) {
+            if (confirm("Êtes vous sûr(e) de vouloir supprimer ce métier ?")) {
+                document.getElementById("suppressionMetier"+monForm).submit();
+            }
+        }
+
+    </script>
+</body>
+</html>

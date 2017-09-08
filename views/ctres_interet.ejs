@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container">
+
+    <a href="/deconnexion" class="btn btn-warning">Déconnexion</a>
+    <a href="/categories" class="btn btn-warning">Retour au menu</a>
+
+    <h2>Liste des établissements</h2>
+
+    <a href="/centres_interet/ajouter/" class="btn btn-info">Ajouter un centre d'intérêt</a>
+    <!--<p> ... </p>-->
+    <table class="table table-hover">
+
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Centre d'intérêt</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if (typeof centres_interet == 'object' && centres_interet.length >0 )  { %>
+        <% centres_interet.forEach(function (centres_interet)  { %>
+        <tr>
+            <td><%= centres_interet.id %></td>
+            <td><%= centres_interet.centres_interet %></td>
+            <td><a href="/centres_interet/modifier/<%= centres_interet.id %>" class="btn btn-primary">Modifier</a></td>
+            <td>
+                <form method="POST" action="/centres_interet/<%= centres_interet.id %>" id="suppressionCentresInteret<%= centres_interet.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" class="btn btn-warning" onclick="confirmationSuppression(<%= centres_interet.id %>)">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        <% }else { %>
+        <td class="text-center">Aucun centre d'intérêt</td>
+
+        <% } %>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    function confirmationSuppression(monForm) {
+        if (confirm("Êtes vous sûr(e) de vouloir supprimer ce centre d'intérêt ?")) {
+            document.getElementById("suppressionMetier"+monForm).submit();
+        }
+    }
+
+</script>
+
+</body>
+</html>

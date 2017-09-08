@@ -1,0 +1,23 @@
+{
+  "name": "back-office",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "body-parser": "^1.17.2",
+    "method-override": "^2.3.9",
+    "nodemon": "^1.11.0",
+    "promise-mysql": "^3.0.2",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

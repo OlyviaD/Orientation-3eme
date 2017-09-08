@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container">
+
+    <a href="/deconnexion" class="btn btn-warning">Déconnexion</a>
+    <a href="/categories" class="btn btn-warning">Retour au menu</a>
+
+    <h2>Liste des secteurs d'activité</h2>
+
+    <a href="/secteurs_activite/ajouter/" class="btn btn-info">Ajouter un secteur d'activité</a>
+    <!--<p> ... </p>-->
+    <table class="table table-hover">
+
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Secteur d'activité</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if (typeof secteurs_activite == 'object' && secteurs_activite.length >0 )  { %>
+        <% secteurs_activite.forEach(function (secteurs_activite)  { %>
+        <tr>
+            <td><%= secteurs_activite.id %></td>
+            <td><%= secteurs_activite.secteurs_activite %></td>
+            <td><a href="/secteurs_activite/modifier/<%= secteurs_activite.id %>" class="btn btn-primary">Modifier</a></td>
+            <td>
+                <form method="POST" action="/secteurs_activite/<%= secteurs_activite.id %>" id="suppressionSecteurActivite<%= secteurs_activite.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" class="btn btn-warning" onclick="confirmationSuppression(<%= secteurs_activite.id %>)">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        <% }else { %>
+        <td class="text-center">Aucun secteur d'activité</td>
+
+        <% } %>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    function confirmationSuppression(monForm) {
+        if (confirm("Êtes vous sûr(e) de vouloir supprimer ce secteur d'activité ?")) {
+            document.getElementById("suppressionMetier"+monForm).submit();
+        }
+    }
+
+</script>
+
+</body>
+</html>

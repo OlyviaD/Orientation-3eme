@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container">
+
+    <a href="/deconnexion" class="btn btn-warning">Déconnexion</a>
+    <a href="/categories" class="btn btn-warning">Retour au menu</a>
+
+    <h2>Liste des établissements</h2>
+
+    <a href="/etablissements/ajouter/" class="btn btn-info">Ajouter un établissement</a>
+    <!--<p> ... </p>-->
+    <table class="table table-hover">
+
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Nom </th>
+            <th>Adresse</th>
+            <th>Département</th>
+            <th>Contact (téléphone)</th>
+            <th>Contact (e-mail)</th>
+            <th>Formation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if (typeof etablissements == 'object' && etablissements.length >0 )  { %>
+        <% etablissements.forEach(function (etablissement)  { %>
+        <tr>
+            <td><%= etablissement.id %></td>
+            <td><%= etablissement.nom %></td>
+            <td><%= etablissement.adresse %></td>
+            <td><%= etablissement.departement %></td>
+            <td><%= etablissement.telephone %></td>
+            <td><%= etablissement.email %></td>
+            <td><%= etablissement.formations %></td>
+            <td><a href="/etablissements/modifier/<%= etablissement.id %>" class="btn btn-primary">Modifier</a></td>
+            <td>
+                <form method="POST" action="/etablissements/<%= etablissement.id %>" id="suppressionEtablissement<%= etablissement.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" class="btn btn-warning" onclick="confirmationSuppression(<%= etablissement.id %>)">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        <% }else { %>
+        <td class="text-center">Aucun établissement</td>
+
+        <% } %>
+        </tbody>
+    </table>
+
+</div>
+<script type="text/javascript">
+    function confirmationSuppression(monForm) {
+        if (confirm("Êtes-vous sûr(e) de vouloir supprimer cet établissement ?")) {
+            document.getElementById("suppressionEtablissement"+monForm).submit();
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

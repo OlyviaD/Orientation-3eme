@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container-fluid">
+
+    <a href="/deconnexion">Déconnexion</a>
+
+            <form class="col-lg-12 col-md-12" method="POST" action="/etablissements/ajouter">
+
+                <span class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">Tous les champs marqués d'un * sont obligatoires.</span>
+
+            <div class="row">
+                <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="nom">Nom de l'établissement: <span>*</span></label>
+            </div>
+            <div class="row">
+                <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 nom" id="nom" name="nom" required>
+            </div>
+            <div class="row">
+                <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="adresse">Adresse: <span>*</span></label>
+            </div>
+            <div class="row">
+                <textarea class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="adresse" name="adresse" required></textarea>
+            </div>
+            <div class="row">
+                <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="departement">Département (exemple: 095):<span>*</span></label>
+            </div>
+            <div class="row">
+                <textarea class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="departement" name="departement" required></textarea>
+            </div>
+            <div class="row">
+                <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="telephone">Contact téléphonique (exemple : 0120304050):  <span>*</span></label>
+            </div>
+            <div class="row">
+                <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" id="telephone" name="telephone" required>
+            </div>
+            <div class="row">
+                <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="email">Contact (e-mail) (exemple : etablissement@orientation.fr): <span>*</span></label>
+            </div>
+            <div class="row">
+                <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 email" id="email" name="email" type="email" required>
+            </div>
+                <div class="row">
+                    <label class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10" for="formations">Formation: <span>*</span></label>
+                </div>
+                <div class="row">
+                    <input class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 formation" id="formations" name="formations" required>
+                </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 vide"></div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+
+                <a href="/etablissements/">Annuler l'ajout</a>
+            </form>
+    </div>
+
+</body>
+</html>

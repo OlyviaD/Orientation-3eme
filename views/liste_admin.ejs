@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <% include squelette/header.ejs %>
+</head>
+<body>
+<div class="container">
+
+    <a href="/deconnexion" class="btn btn-warning">Déconnexion</a>
+    <a href="/categories" class="btn btn-warning">Retour au menu</a>
+
+    <h2>Administrateur(s)</h2>
+
+    <a href="/administrateurs/ajouter/" class="btn btn-info">Créer un administrateur</a>
+
+    <!--<p> ... </p>-->
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <!--<th>id</th>-->
+            <th>Administrateur</th>
+            <!--<th>Mot de passe</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <% if (typeof administrateurs == 'object' && administrateurs.length >0 )  { %>
+        <% administrateurs.forEach(function (administrateur)  { %>
+        <tr>
+            <!--<td><%= administrateur.id %></td>-->
+            <td><%= administrateur.adm %></td>
+            <!--<td><%= administrateur.motdepasse %></td>-->
+            <td><a href="/administrateurs/modifier/<%= administrateur.id %>" class="btn btn-primary">Modifier</a></td>
+            <td>
+                <form method="POST" action="/administrateurs/<%= administrateur.id %>" id="suppressionAdmin<%= administrateur.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="button" class="btn btn-warning" onclick="confirmationSuppression(<%= administrateur.id %>)">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+        <td class="text-center">Aucun administrateur</td>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    function confirmationSuppression(monForm) {
+        if (confirm("Êtes vous sûr(e) de vouloir supprimer cet établissement ?")) {
+            document.getElementById("suppressionAdmin"+monForm).submit();
+        }
+    }
+
+</script>
+</body>
+</html>
